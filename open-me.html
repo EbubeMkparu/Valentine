@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7); /* Romantic gradient */
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: #ff3366;
+      animation: fadeIn 2s ease-in-out;
+      margin: 0 0 20px 0;
+    }
+
+    .heart {
+      font-size: 100px;
+      color: red;
+      animation: heartbeat 1s infinite alternate;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .btn {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .yes {
+      background-color: #ff3366;
+      color: white;
+    }
+
+    .yes:hover {
+      background-color: #ff6699;
+    }
+
+    .no {
+      background-color: #333;
+      color: white;
+      position: relative; /* Will be changed to absolute when moving */
+    }
+
+    .no:hover {
+      background-color: #666;
+    }
+
+    .message {
+      font-size: 24px;
+      color: #333;
+      display: none;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Animations */
+    @keyframes heartbeat {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Asa'm Will You Be My Valentine?</h1>
+    <div class="heart">❤️</div>
+    <div class="buttons">
+      <button class="btn yes" onclick="showMessage()">Yes 💖</button>
+      <button class="btn no" id="no-btn" onclick="moveNoButton()">No 😢</button>
+    </div>
+    <p class="message" id="message">Yay! Thank you My Babyy! 💘</p>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    function moveNoButton() {
+      const noBtn = document.getElementById("no-btn");
+      // Change button position to absolute so it can be moved freely
+      noBtn.style.position = "absolute";
+      // Calculate maximum X and Y values to keep the button fully in view
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    }
+  </script>
+</body>
+</html>
